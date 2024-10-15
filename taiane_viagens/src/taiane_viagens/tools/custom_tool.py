@@ -1,10 +1,11 @@
 from pydantic import Field
 import json
 from typing import Callable, Optional
-from crewai_tools import BaseTool, SerperDevTool
+from crewai_tools import BaseTool, SerperDevTool, ScrapeWebsiteTool
 import requests
 import streamlit as st
 
+test = ScrapeWebsiteTool(website_url='https://google.com')
 search_tool = SerperDevTool()
 
 def _print_func(argument: str) -> None:

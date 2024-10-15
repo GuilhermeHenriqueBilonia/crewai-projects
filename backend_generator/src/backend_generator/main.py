@@ -56,13 +56,13 @@ def test():
         raise Exception(f"An error occurred while replaying the crew: {e}")
 
 # Title
-st.title("Gerar apresentação")
+st.title("Gerar código backend")
 
 
 # Text Inputs
 
 # st.write('Vamos montar uma apresentação? descreva o tema e pontos importantes para que eu consiga te ajudar')
-st.chat_message('assistant').write('Vamos montar uma apresentação? descreva o tema e pontos importantes para que eu consiga te ajudar')
+st.chat_message('assistant').write('Me diga a tabela, e as colunas com os tipos necessários')
 
 st.session_state.messages = []
 
