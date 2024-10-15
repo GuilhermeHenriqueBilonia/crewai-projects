@@ -1,0 +1,41 @@
+{
+    "configurations": [
+        {
+            "name": "Python:Streamlit",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "args": [
+                "run",
+                "busca_cnpjs/src/busca_cnpjs/streamlit_custom.py",
+                "--server.port",
+                "8501"
+            ]
+        },
+        {
+            "name": "Python:gerar_apresentacao",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "args": [
+                "run",
+                "gamma_app/src/gamma_app/main.py",
+                "--server.port",
+                "8501"
+            ]
+        },
+        
+        {
+            "name": "Python:backend_generator",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "args": [
+                "run",
+                "backend_generator/src/backend_generator/main.py",
+                "--server.port",
+                "8501"
+            ]
+        }
+    ]
+}

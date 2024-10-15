@@ -1,0 +1,28 @@
+atendee_task:
+  description: >
+    Interaja com o usuário para obter informações sobre a viagem e crie um resumo das informações passadas.
+  expected_output: >
+    Um resumo das informações passadas pelo usuário.
+  agent: atendente
+
+correction_task:
+  description: >
+    Corrija as informações de destino e origem com os códigos IATA dos aeroportos e devolva o mesmo resumo recebido, mas com a correção aplicada.
+  expected_output: >
+    Um resumo das informações passadas pelo usuário, com as correções aplicadas.
+  agent: analista_aeroportos
+
+buscador_passagem_task:
+  description: >
+    Criar um JSON e buscar as passagens disponíveis com os dados do usuário
+  expected_output: >
+    Um JSON com as informações de busca de passagens
+  agent: buscador_passagem
+
+
+agente_viagem_task:
+  description: >
+    Filtra as opções de passagens aéreas e apresenta as melhores opções ao usuário com base nas informações fornecidas.
+  expected_output: >
+    Quatro opções de passagens aéreas com base nas informações fornecidas.
+  agent: agente_viagem

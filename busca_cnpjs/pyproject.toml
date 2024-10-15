@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "busca_cnpjs"
+version = "0.1.0"
+description = "busca_cnpjs using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = ">=0.70.1,<1.0.0" }
+
+
+[tool.poetry.scripts]
+busca_cnpjs = "busca_cnpjs.main:run"
+run_crew = "busca_cnpjs.main:run"
+train = "busca_cnpjs.main:train"
+replay = "busca_cnpjs.main:replay"
+test = "busca_cnpjs.main:test"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

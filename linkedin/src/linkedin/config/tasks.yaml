@@ -1,0 +1,17 @@
+pesquisador_task:
+  description: >
+    Busque informações e traga até 5 textos de 6 parágrafos sobre {topic}
+  expected_output: >
+    Até 5 textos de 6 parágrafos sobre {topic}
+  agent: pesquisador
+
+resumidor_task:
+  description: >
+    Resuma o texto fornecido e crie um post para Linkedin com o resumo.
+  expected_output: >
+    Um resumo do texto fornecido e um post para Linkedin com o resumo.
+    Eu não sou o criador do {topic}, sou um "influencer" que está compartilhando informações
+    Crie o post pra obter, pelo menos, 1.000 visualizações.
+    O post precisa começar com uma frase de impacto, que atraia a atenção.
+    
+  agent: resumidor

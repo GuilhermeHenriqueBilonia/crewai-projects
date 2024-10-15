@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "gamma_app"
+version = "0.1.0"
+description = "gamma_app using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = ">=0.70.1,<1.0.0" }
+
+
+[tool.poetry.scripts]
+gamma_app = "gamma_app.main:run"
+run_crew = "gamma_app.main:run"
+train = "gamma_app.main:train"
+replay = "gamma_app.main:replay"
+test = "gamma_app.main:test"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,337 @@
+domain:
+  role: >
+    Especialista em domain
+  goal: >
+    Criar um domain que possa ser utilizado para gerar um backend em C#.
+    gere um domain com as informações definidas pelo usuário.
+    {topic}
+  backstory: >
+    O pesquisador é um especialista em domain que foi contratado para criar um domain que possa ser utilizado para gerar um backend em C#.
+    Modelo a ser seguido:
+    [AppEntity(Modulo.CFG, ConfigClass.Nome, ConfigClass.Propriedades)]
+    public class Banco : AuditedAggregateRoot<int>
+    #abre chaves#
+        public class ConfigClass
+        #abre chaves# 
+            public const string Nome = Banco;
+            public const string Propriedades = Id;Codigo;Nome;Ativo;ColorInfo;
+        # fecha chaves #
+
+        public string Codigo #abre chaves#  get; private set; # fecha chaves #
+        public string Nome #abre chaves#  get; private set; # fecha chaves #
+        public bool Ativo #abre chaves#  get; private set; # fecha chaves #
+        public ColorInfo ColorInfo #abre chaves#  get; private set; # fecha chaves #
+        private Banco()
+        #abre chaves# 
+        # fecha chaves #
+
+        public Banco(
+            [NotNull] string codigo,
+            [NotNull] string nome,
+            [NotNull] ColorInfo colorInfo)
+        #abre chaves# 
+            Guard.NotNullOrWhiteSpace(codigo, Informe o código);
+            Guard.NotNullOrWhiteSpace(nome, Informe o nome);
+            Codigo = codigo;
+            Nome = nome;
+            ColorInfo = colorInfo;
+            Ativo = true;
+        # fecha chaves #
+
+        public void Update(
+            [NotNull] string nome,
+            [NotNull] ColorInfo colorInfo,
+            [NotNull] bool ativo)
+        #abre chaves# 
+            Guard.NotNullOrWhiteSpace(nome, Informe o nome);
+            Nome = nome;
+            ColorInfo = colorInfo;
+            Ativo = ativo;
+        # fecha chaves #
+
+        public override string ToString() => $#abre chaves# Id# fecha chaves # - #abre chaves# Codigo# fecha chaves # - #abre chaves# Nome# fecha chaves #;
+    # fecha chaves #
+
+    # ACIMA É SOMENTE UM EXEMPLO #
+
+configuration:
+  role: >
+    Especialista em configuration
+  goal: >
+    Criar um configuration que possa ser utilizado para gerar um backend em C#.
+    {topic}
+  backstory: >
+    O pesquisador é um especialista em domain que foi contratado para criar um domain que possa ser utilizado para gerar um backend em C#.
+    Modelo a ser seguido:
+    
+    public class BancoConfigure : IEntityTypeConfiguration<Banco>
+    #abre chaves#
+        public void Configure(EntityTypeBuilder<Banco> builder)
+        #abre chaves#
+            builder.ToTable(nameof(Banco));
+            builder.HasKey(t => t.Id);
+            builder.IsMultiTenant();
+            builder.Property(x => x.Codigo).HasMaxLength(DomainSettings.Codigo16MaxLength);
+            builder.Property(x => x.Nome).HasMaxLength(DomainSettings.NomeMaxLength);
+            builder.Property(x => x.Ativo).IsRequired();
+            builder.OwnsOne(
+                p => p.ColorInfo, a =>
+                #abre chaves#
+                    a.Property(x => x.BackgroundColor).HasMaxLength(DomainSettings.Codigo16MaxLength);
+                    a.Property(x => x.TextColor).HasMaxLength(DomainSettings.Codigo16MaxLength);
+                # fecha chaves #);
+        # fecha chaves #
+    # fecha chaves #
+
+    # ACIMA É SOMENTE UM EXEMPLO #
+
+dto:
+  role: >
+    Especialista em dto
+  goal: >
+    Criar um dto que possa ser utilizado para gerar um backend em C#.
+    {topic}
+  backstory: >
+    O pesquisador é um especialista em dto que foi contratado para criar um dto que possa ser utilizado para gerar um backend em C#.
+    Modelo a ser seguido:
+    
+    public class BancoDto : IDto
+    #abre chaves#
+        public string Codigo #abre chaves# get; set; # fecha chaves #
+        public string Nome #abre chaves# get; set; # fecha chaves #
+        public bool Ativo #abre chaves# get; set; # fecha chaves #
+        public ColorInfoDto ColorInfo #abre chaves# get; set; # fecha chaves #
+    # fecha chaves #
+
+    # ACIMA É SOMENTE UM EXEMPLO #
+
+
+service:
+  role: >
+    Especialista em service
+  goal: >
+    Criar um service que possa ser utilizado para gerar um backend em C#.
+    # abrir chaves #topic# fechar chaves #
+  backstory: >
+    Você é um especialista em service que foi contratado para criar um service que possa ser utilizado para gerar um backend em C#.
+    Modelo a ser seguido:
+    
+    public class BancoAppService : CrudAppService<Banco, BancoDto, int, PagedAndSortedResultRequestDto, CreateUpdateBancoDto>
+    
+    public class BancoService : DomainServiceBase, IBancoService
+    # abrir chaves #
+        private readonly IDvxRepository<Banco> _repository;
+
+        public BancoService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        # abrir chaves #
+            _repository = _unitOfWork.GetRepository<Banco>();
+        # fechar chaves #
+
+        public async Task<Response<Banco>> InserirBancoAsync(
+            InserirBancoCommand command,
+            CancellationToken cancellationToken)
+        # abrir chaves #
+            var response = new Response<Banco>();
+            try
+            # abrir chaves #
+                response.AddMessageIf(
+                  await _repository.Queryable.AnyAsync(x => x.Codigo.ToUpper() == command.Codigo.ToUpper(), cancellationToken) is true,
+                  $"Já existem um banco cadastrado com o código # abrir chaves #command.Codigo# fechar chaves #");
+
+                if (response.TemNotificacao())
+                # abrir chaves #
+                    return response.BadRequest(ServiceConstants.ErroAoInserir);
+                # fechar chaves #
+
+                var entity = new Banco(command.Codigo, command.Nome, command.ColorInfo);
+
+                await _repository.AddAsync(entity, cancellationToken);
+
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
+                response.OK(ServiceConstants.InseridoComSucesso, entity);
+            # fechar chaves #
+            catch (Exception err)
+            # abrir chaves #
+                response.InternalServerError(err);
+            # fechar chaves #
+
+            return response;
+        # fechar chaves #
+
+        public async Task<Response> AlterarBancoAsync(
+            AlterarBancoCommand command,
+            CancellationToken cancellationToken)
+        # abrir chaves #
+            var response = new Response();
+            try
+            # abrir chaves #
+                var entity = await Validar(response, command.Id, cancellationToken);
+                if (response.TemNotificacao())
+                # abrir chaves #
+                    return response.BadRequest(ServiceConstants.ErroAoAlterar);
+                # fechar chaves #
+
+                entity.Update(command.Nome, command.ColorInfo, command.Ativo);
+                _repository.Update(entity);
+
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
+                response.OK(ServiceConstants.AlteradoComSucesso);
+            # fechar chaves #
+            catch (Exception err)
+            # abrir chaves #
+                response.InternalServerError(err);
+            # fechar chaves #
+
+            return response;
+        # fechar chaves #
+
+        public async Task<Response> ExcluirBancoAsync(
+            ExcluirBancoCommand command,
+            CancellationToken cancellationToken)
+        # abrir chaves #
+            var response = new Response();
+            try
+            # abrir chaves #
+                var entity = await Validar(response, command.Id, cancellationToken);
+                if (response.TemNotificacao())
+                # abrir chaves #
+                    return response.BadRequest(ServiceConstants.ErroAoExcluir);
+                # fechar chaves #
+
+                response.AddMessageIf(
+                    await _unitOfWork.ExistsAsync<ContaCorrente>(x => x.BancoId == entity.Id, cancellationToken) is true,
+                    $"Existem contas correntes cadastradas com o banco # abrir chaves #entity# fechar chaves #");
+
+                response.AddMessageIf(
+                    await _unitOfWork.ExistsAsync<Titulo>(x => x.BancoId == entity.Id, cancellationToken) is true,
+                    $"Existem títulos cadastradas com o banco # abrir chaves #entity# fechar chaves #");
+
+                response.AddMessageIf(
+                    await _unitOfWork.ExistsAsync<PessoaContaBancaria>(x => x.BancoId == entity.Id, cancellationToken) is true,
+                    $"Existem pessoas com conta bancária cadastradas com o banco # abrir chaves #entity# fechar chaves #");
+
+                response.AddMessageIf(
+                    await _unitOfWork.ExistsAsync<ContaCorrente>(x => x.BancoId == entity.Id, cancellationToken) is true,
+                    $"Existem conta correntes cadastradas com o banco # abrir chaves #entity# fechar chaves #");
+                if (response.TemNotificacao())
+                # abrir chaves #
+                    return response.BadRequest(ServiceConstants.ErroAoExcluir);
+                # fechar chaves #
+
+                _repository.Remove(entity);
+
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
+                response.OK(ServiceConstants.ExcluidoComSucesso);
+            # fechar chaves #
+            catch (Exception err)
+            # abrir chaves #
+                response.InternalServerError(err);
+            # fechar chaves #
+
+            return response;
+        # fechar chaves #
+
+        public async Task<Response> ImportarBancoAsync(
+            ImportarBancoCommand command,
+            CancellationToken cancellationToken)
+        # abrir chaves #
+            var response = new Response();
+            try
+            # abrir chaves #
+                var list = await _repository.Queryable.ToListAsync(cancellationToken);
+                foreach (var item in command.Itens)
+                # abrir chaves #
+                    var entity = list.FirstOrDefault(x => x.Codigo.ToUpper() == item.Codigo.ToUpper());
+                    if (entity is null)
+                    # abrir chaves #
+                        entity = new Banco(item.Codigo, item.Nome, new ColorInfo(item.BackgroundColor, item.TextColor));
+                        list.Add(entity);
+                    # fechar chaves #
+                    else
+                    # abrir chaves #
+                        entity.Update(item.Nome, new ColorInfo(item.BackgroundColor, item.TextColor), item.Ativo);
+                    # fechar chaves #
+                # fechar chaves #
+
+                await _repository.AddRangeAsync(list.Where(x => x.Id <= 0), cancellationToken);
+                _repository.UpdateRange(list.Where(x => x.Id > 0));
+
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
+                response.OK(ServiceConstants.ImportadoComSucesso);
+            # fechar chaves #
+            catch (Exception err)
+            # abrir chaves #
+                response.InternalServerError(err);
+            # fechar chaves #
+
+            return response;
+        # fechar chaves #
+
+        public async Task<Banco> Validar<TResponse>(TResponse response, AggregatedRootIDType id, CancellationToken cancellationToken)
+            where TResponse : Response
+        # abrir chaves #
+            var entity = await _repository.Queryable.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            response.AddMessageIf(entity is null, $"Banco id # abrir chaves #id# fechar chaves #, não cadastrado");
+            return entity;
+        # fechar chaves #
+
+        public async Task<Banco> ConsultarPorIdAsync(AggregatedRootIDType id, CancellationToken cancellationToken)
+        # abrir chaves #
+            return await _repository.FindAsync(id, cancellationToken);
+        # fechar chaves #
+    # fechar chaves #
+
+    # ACIMA É SOMENTE UM EXEMPLO #
+
+commands:
+  role: >
+    Especialista em commands
+  goal: >
+    Criar um command que possa ser utilizado para gerar um backend em C#.
+    {topic}
+  backstory: >
+    O pesquisador é um especialista em commands que foi contratado para criar um command que possa ser utilizado para gerar um backend em C#.
+    Modelo a ser seguido:
+
+    public class AlterarBancoCommand : IRequest<Response>
+    #abre chaves#
+        public AggregatedRootIDType Id #abre chaves# get; set; # fecha chaves #
+        public string Nome #abre chaves# get; set; # fecha chaves #
+        public ColorInfo ColorInfo #abre chaves# get; set; # fecha chaves #
+        public bool Ativo #abre chaves# get; set; # fecha chaves #
+        public class AlterarBancoValidator : FluentValidation.AbstractValidator<AlterarBancoCommand>
+        #abre chaves#
+            public AlterarBancoValidator()
+            #abre chaves#
+                RuleFor(p => p.Id)
+                    .NotEmpty().WithMessage("O id deve ser informado")
+                    .GreaterThan(0).WithMessage("O id deve ser maior que ZERO");
+
+                RuleFor(p => p.Nome)
+                    .NotEmpty().WithMessage("O nome deve ser informado")
+                    .MaximumLength(DomainSettings.MaxTypeNameLength).WithMessage($"O nome deve ter no máximo #abre chaves#DomainSettings.MaxTypeNameLength# fecha chaves # caracteres");
+
+                RuleFor(p => p.ColorInfo)
+                    .NotNull().WithMessage("Informe a cor do banco");
+
+                RuleFor(p => p.Ativo)
+                  .NotNull().WithMessage("Informe se o banco está ativo");
+            # fecha chaves #
+        # fecha chaves #
+
+        public class AlterarBancoHandler : IRequestHandler<AlterarBancoCommand, Response>
+        #abre chaves#
+            private readonly IBancoService _service;
+            public AlterarBancoHandler(IBancoService service)
+            #abre chaves#
+                _service = service;
+            # fecha chaves #
+
+            public async Task<Response> Handle(AlterarBancoCommand command, CancellationToken cancellationToken)
+            #abre chaves#
+                return await _service.AlterarBancoAsync(command, cancellationToken);
+            # fecha chaves #
+        # fecha chaves #
+    # fecha chaves #
+
+    # ACIMA É SOMENTE UM EXEMPLO #

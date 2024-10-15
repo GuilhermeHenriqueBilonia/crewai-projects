@@ -1,0 +1,34 @@
+domain_task:
+  description: >
+    Gere um domain baseado em {topic}
+  expected_output: >
+    Domain gerado com as informações definidas pelo usuário
+  agent: domain
+
+configure_task:
+  description: >
+    Configura o configuration baseado em {topic}
+  expected_output: >
+    configuration configurado com as informações definidas pelo usuário
+  agent: configuration
+
+dto_task:
+  description: >
+    Gera um dto baseado em {topic}
+  expected_output: >
+    DTO gerado com as informações definidas pelo usuário
+  agent: dto
+
+service_task:
+  description: >
+    Gera um service baseado em {topic}
+  expected_output: >
+    Service gerado com as informações definidas pelo usuário
+  agent: service
+
+command_task:
+  description: >
+    Gera um command de Alter, um de Insert, um de Delete e um de Import baseado em {topic}
+  expected_output: >
+    Commands de Alter, um de Insert, um de Delete e um de Import gerados com as informações definidas pelo usuário
+  agent: commands

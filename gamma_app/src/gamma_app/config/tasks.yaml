@@ -1,0 +1,21 @@
+pesquisador_task:
+  description: >
+    Busque informações e traga até 5 textos de 6 parágrafos sobre {topic}
+  expected_output: >
+    Até 5 textos de 6 parágrafos sobre {topic}
+  agent: pesquisador
+
+resumidor_task:
+  description: >
+    Resuma o texto fornecido e crie um resumo focado em apresentação
+  expected_output: >
+    Resumo do texto fornecido focado em apresentação, contendo o máximo de dados possível da forma mais rwsumida possível
+  agent: resumidor
+
+criador_task:
+  description: >
+    Crie um prompt para geração de apresentação no gamma app com os dados fornecidos
+  expected_output: >
+    Prompt para geração de apresentação no gamma app.
+    Gere quantos slides forem necessários para apresentar os dados fornecidos
+  agent: criador

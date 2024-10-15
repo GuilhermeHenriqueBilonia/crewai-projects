@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "taiane_viagens"
+version = "0.1.0"
+description = "Taiane_viagens using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = ">=0.70.1,<1.0.0" }
+
+
+[tool.poetry.scripts]
+taiane_viagens = "taiane_viagens.main:run"
+run_crew = "taiane_viagens.main:run"
+train = "taiane_viagens.main:train"
+replay = "taiane_viagens.main:replay"
+test = "taiane_viagens.main:test"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,43 @@
+# atendente_task:
+#   description: >
+#     interaja com o usuário para conseguir as informações necessárias
+#   expected_output: >
+#     um resumo das informações passadas pelo usuário
+#   agent: atendente
+
+  
+pesquisador_task:
+  description: >
+    Entenda os filtros necessários e corrija as informações se necessário usando pesquisa na web
+  expected_output: >
+    Um resumo das informações passadas pelo usuário com as correções aplicadas
+  agent: pesquisador
+
+
+transformador_task:
+  description: >
+    Entenda os filtros e retorne uma URL para a chamada da API método GET
+  expected_output: >
+    Uma URL para a chamada da API método GET
+  agent: transformador
+
+integrador_task:
+  description: >
+    Realize a chamada da API e retorne os dados
+  expected_output: >
+    Os dados retornados pela API
+  agent: integrador
+
+dba_task:
+  description: >
+    Realize consultas SQL Server
+  expected_output: >
+    Os dados retornados pela consulta SQL Server
+  agent: dba
+
+consultor_task:
+  description: >
+    Entregue os dados para o usuário
+  expected_output: >
+    Os dados entregues para o usuário
+  agent: consultor
