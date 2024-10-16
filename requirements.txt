@@ -267,38 +267,3 @@ streamlit==1.39.0
 swarm @ git+https://github.com/openai/swarm.git@9db581cecaacea0d46a933d6453c312b034dbf47
 sympy==1.13.3
 tabulate==0.9.0
-# Editable Git install with no remote (taiane_viagens==0.1.0)
--e c:\users\guibi\python\vscode\devex\novo-crewai\taiane_viagens
-tblib==3.0.0
-tenacity==8.5.0
-termcolor==2.5.0
-threadpoolctl==3.5.0
-tiktoken==0.7.0
-tokenizers==0.20.1
-toml==0.10.2
-tomlkit==0.13.2
-tornado==6.4.1
-tqdm==4.66.5
-traitlets==5.14.3
-trio==0.26.2
-trio-websocket==0.11.1
-trove-classifiers==2024.10.11
-typer==0.12.5
-types-requests==2.32.0.20240914
-typing-inspect==0.9.0
-typing_extensions==4.12.2
-tzdata==2024.2
-urllib3==2.2.3
-uvicorn==0.31.1
-virtualenv==20.26.6
-waitress==3.0.0
-watchdog==5.0.3
-watchfiles==0.24.0
-wcwidth==0.2.13
-websocket-client==1.8.0
-websockets==13.1
-Werkzeug==3.0.4
-wrapt==1.16.0
-wsproto==1.2.0
-yarl==1.15.0
-zipp==3.20.2
