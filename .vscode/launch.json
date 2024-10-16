@@ -1,13 +1,14 @@
 {
     "configurations": [
+        {"name":"Python Debugger: Current File","type":"debugpy","request":"launch","program":"${file}","console":"integratedTerminal"},
         {
-            "name": "Python:Streamlit",
+            "name": "Python:busca_cnpj",
             "type": "debugpy",
             "request": "launch",
             "module": "streamlit",
             "args": [
                 "run",
-                "busca_cnpjs/src/busca_cnpjs/streamlit_custom.py",
+                "busca_cnpjs/src/busca_cnpjs/main.py",
                 "--server.port",
                 "8501"
             ]
@@ -24,7 +25,6 @@
                 "8501"
             ]
         },
-        
         {
             "name": "Python:backend_generator",
             "type": "debugpy",
@@ -33,6 +33,18 @@
             "args": [
                 "run",
                 "backend_generator/src/backend_generator/main.py",
+                "--server.port",
+                "8501"
+            ]
+        },
+        {
+            "name": "Python:taiane",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "python",
+            "args": [
+                "run",
+                "taiane_viagem/src/taiane_viagens/main.py",
                 "--server.port",
                 "8501"
             ]

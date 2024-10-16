@@ -2,7 +2,7 @@
 name = "backend_generator"
 version = "0.1.0"
 description = "backend_generator using crewAI"
-authors = ["Your Name <you@example.com>"]
+authors = ["guibilonia@gmail.com"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
