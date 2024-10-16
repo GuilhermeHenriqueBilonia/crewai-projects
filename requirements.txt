@@ -6,4 +6,3 @@ pandas
 pyodbc
 python-dotenv
 pysqlite3-binary
-pysqlite3
