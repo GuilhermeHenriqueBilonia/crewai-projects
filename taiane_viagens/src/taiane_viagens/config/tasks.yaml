@@ -1,9 +1,3 @@
-atendee_task:
-  description: >
-    Interaja com o usuário para obter informações sobre a viagem e crie um resumo das informações passadas.
-  expected_output: >
-    Um resumo das informações passadas pelo usuário.
-  agent: atendente
 
 correction_task:
   description: >

@@ -1,53 +1,73 @@
 {
-    "configurations": [
-        {"name":"Python Debugger: Current File","type":"debugpy","request":"launch","program":"${file}","console":"integratedTerminal"},
-        {
-            "name": "Python:busca_cnpj",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "streamlit",
-            "args": [
-                "run",
-                "busca_cnpjs/src/busca_cnpjs/main.py",
-                "--server.port",
-                "8501"
-            ]
-        },
-        {
-            "name": "Python:gerar_apresentacao",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "streamlit",
-            "args": [
-                "run",
-                "gamma_app/src/gamma_app/main.py",
-                "--server.port",
-                "8501"
-            ]
-        },
-        {
-            "name": "Python:backend_generator",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "streamlit",
-            "args": [
-                "run",
-                "backend_generator/src/backend_generator/main.py",
-                "--server.port",
-                "8501"
-            ]
-        },
-        {
-            "name": "Python:taiane",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "python",
-            "args": [
-                "run",
-                "taiane_viagem/src/taiane_viagens/main.py",
-                "--server.port",
-                "8501"
-            ]
-        }
-    ]
+  "configurations": [
+    {
+      "name": "Python:busca_cnpj",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "chainlit",
+      "args": [
+        "run",
+        "busca_cnpjs/src/busca_cnpjs_chainlit/main.py",
+        "--port",
+        "8501",
+        "-w"
+      ]
+    },
+    {
+      "name": "Python:gerar_apresentacao",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "gamma_app/src/gamma_app/main.py",
+        "--server.port",
+        "8501"
+      ]
+    },
+    {
+      "name": "Python:backend_generator",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "backend_generator/src/backend_generator/main.py",
+        "--server.port",
+        "8501"
+      ]
+    },
+    {
+      "name": "Python:mindmap_generator",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "obsidian_mindmap/src/obsidian_mindmap/main.py",
+        "--server.port",
+        "8501"
+      ]
+    },
+    {
+      "name": "Python:backend_generator_v2",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "chainlit",
+      "args": [
+        "run",
+        "backend_generator/src/backend_generator/main_v2.py",
+        "--port",
+        "8501",
+        "-w"
+      ]
+    },
+    {
+      "name": "Python:taiane",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "taiane_viagens/src/taiane_viagens/main.py",
+      "console": "integratedTerminal"
+    }
+  ]
 }

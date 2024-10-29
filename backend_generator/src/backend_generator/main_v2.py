@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-from crew import BackendCrew
+from crew_2 import BackendCrew
 import streamlit as st
 
 # This main file is intended to be a way for your to run your
@@ -55,26 +55,14 @@ def test():
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
 
+import chainlit as cl
 
+@cl.on_message
+async def main(message: cl.Message):
+    result = BackendCrew().crew().kickoff(inputs={'topic': message.content})
 
-# Title
-st.title("Consultas cnpjs da receita por filtros")
-
-
-# Text Inputs
-
-# st.write('Vamos montar uma apresentação? descreva o tema e pontos importantes para que eu consiga te ajudar')
-st.chat_message('assistant').write("""Olá, vamos gerar seu código de backend?""")
-
-st.session_state.messages = []
-
-st.session_state.status_text = 'erando códigos...'
-
-if inp := st.chat_input('Filtros desejados', key="principal_input"):
-    st.session_state.status_text = 'erando códigos...'
-    st.session_state.messages.append({"role": "user", "content": inp})
-    st.chat_message("user").markdown(inp)
-    with st.spinner("Gerando códigos..."):
-        result = BackendCrew().crew().kickoff(inputs={"topic": inp})
-        st.session_state.messages.append({"role": "user", "content":result })
-        st.chat_message("assistant").markdown(result)
+    # Send a response back to the user
+    await cl.Message(
+        content=f"{result}",
+        author="assistant"
+    ).send()

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="97dd14da-728c-4712-9aaa-16f9dbf9ded1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.chainlit/config.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/bn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/en-US.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/gu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/he-IL.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/hi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/kn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/ml.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/mr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/ta.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/te.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.chainlit/translations/zh-CN.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_generator/src/backend_generator/crew_2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs_chainlit/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs_chainlit/config/agents.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs_chainlit/config/tasks.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs_chainlit/crew.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs_chainlit/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs_chainlit/streamlit_main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs_chainlit/tools/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs_chainlit/tools/custom_tool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chainlit.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/41/cache.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/42/cache.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_generator/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend_generator/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_generator/src/backend_generator/config/agents.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend_generator/src/backend_generator/config/agents.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_generator/src/backend_generator/config/tasks.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend_generator/src/backend_generator/config/tasks.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_generator/src/backend_generator/crew.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend_generator/src/backend_generator/crew.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_generator/src/backend_generator/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend_generator/src/backend_generator/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_generator/src/backend_generator/tools/custom_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend_generator/src/backend_generator/tools/custom_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs/config/tasks.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/busca_cnpjs/src/busca_cnpjs/config/tasks.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taiane_viagens/src/taiane_viagens/crew.py" beforeDir="false" afterPath="$PROJECT_DIR$/taiane_viagens/src/taiane_viagens/crew.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taiane_viagens/src/taiane_viagens/tools/custom_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/taiane_viagens/src/taiane_viagens/tools/custom_tool.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2njHSVfuwb7A06XnpSQG2MD6kxs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/guibi/Python/vscode/DEVEX/novo-crewai",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23339.19" />
+        <option value="bundled-python-sdk-0029f7779945-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23339.19" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97dd14da-728c-4712-9aaa-16f9dbf9ded1" name="Changes" comment="" />
+      <created>1729479565522</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729479565522</updated>
+      <workItem from="1729479566658" duration="23000" />
+    </task>
+    <servers />
+  </component>
+</project>

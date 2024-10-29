@@ -1,6 +1,6 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from tools.custom_tool import HumanTool
+from tools.custom_tool import HumanTool, humanTool_v2
 import streamlit as st
 
 # Uncomment the following line to use an example of a custom tool
@@ -9,21 +9,21 @@ import streamlit as st
 # from crewai_tools import SerperDevTool
 
 
-def step_callback(output):
-	"""Example of a step callback function"""
-	texts = {
-		"gerar_requisitos": "REQUISITOS",
-		"gerar_domain": "DOMAIN",
-		"gerar_sql": "SCRIPT SQL",
-		"gerar_configuration": "CONFIGURATION",
-		"gerar_dto": "DTO",
-		"gerar_service": "SERVICE",
-		"gerar_commands": "COMMANDS",
-	}
-	with st.status(texts[output.name]):
-		raw = f'{output.agent}: {output.raw}'
-		st.session_state.messages.append({"role": "assistant", "content": raw})
-		st.chat_message("assistant").markdown(raw)
+# def step_callback(output):
+# 	"""Example of a step callback function"""
+# 	texts = {
+# 		"gerar_requisitos": "REQUISITOS",
+# 		"gerar_domain": "DOMAIN",
+# 		"gerar_sql": "SCRIPT SQL",
+# 		"gerar_configuration": "CONFIGURATION",
+# 		"gerar_dto": "DTO",
+# 		"gerar_service": "SERVICE",
+# 		"gerar_commands": "COMMANDS",
+# 	}
+# 	with st.status(texts[output.name]):
+# 		raw = f'{output.agent}: {output.raw}'
+# 		st.session_state.messages.append({"role": "assistant", "content": raw})
+# 		st.chat_message("assistant").markdown(raw)
 
 
 @CrewBase
@@ -31,13 +31,13 @@ class BackendCrew():
 	"""BackendCrew crew"""
  
   
-	# @agent
-	# def requisitos(self) -> Agent:
-	# 	return Agent(
-	# 		config=self.agents_config['requisitos'],
-	# 		# tools=[HumanTool()],
-	# 		verbose=True,
-	# 	)
+	@agent
+	def requisitos(self) -> Agent:
+		return Agent(
+			config=self.agents_config['requisitos'],
+			tools=[humanTool_v2],
+			verbose=True,
+		)
   
 	@agent
 	def domain(self) -> Agent:
@@ -81,53 +81,53 @@ class BackendCrew():
 			verbose=True,
 		)
   
-	# @task
-	# def gerar_requisitos(self) -> Task:
-	# 	return Task(
-	# 		config=self.tasks_config['requisitos_task'],
-   	# 		callback=step_callback
-	# 	)
+	@task
+	def gerar_requisitos(self) -> Task:
+		return Task(
+			config=self.tasks_config['requisitos_task'],
+   			# callback=step_callback
+		)
   
 	@task
 	def gerar_domain(self) -> Task:
 		return Task(
 			config=self.tasks_config['domain_task'],
-   			callback=step_callback
+   			# callback=step_callback
 		)
   
 	@task
 	def gerar_sql(self) -> Task:
 		return Task(
 			config=self.tasks_config['sql_task'],
-   			callback=step_callback
+   			# callback=step_callback
 		)
   
 	@task
 	def gerar_configuration(self) -> Task:
 		return Task(
 			config=self.tasks_config['configure_task'],
-   			callback=step_callback
+   			# callback=step_callback
 		)
   
 	@task
 	def gerar_dto(self) -> Task:
 		return Task(
 			config=self.tasks_config['dto_task'],
-   			callback=step_callback
+   			# callback=step_callback
 		)
   
 	@task
 	def gerar_service(self) -> Task:
 		return Task(
 			config=self.tasks_config['service_task'],
-   			callback=step_callback
+   			# callback=step_callback
 		)
   
 	@task
 	def gerar_commands(self) -> Task:
 		return Task(
 			config=self.tasks_config['command_task'],
-   			callback=step_callback
+   			# callback=step_callback
 		)
 
 	@crew

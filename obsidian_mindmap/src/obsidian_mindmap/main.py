@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-from crew import BackendCrew
+from crew import ObsidianMindmapCrew
 import streamlit as st
 
 # This main file is intended to be a way for your to run your
@@ -12,11 +12,11 @@ def run():
     """
     Run the crew.
     """
-    topic = input("Especifique o nome da tabela e os campos que você precisa, incluindo os tipos de dados. \n")
+    topic = input("Texto que você quer gerar um mindmap \n")
     inputs = {
         'topic': topic
     }
-    BackendCrew().crew().kickoff(inputs=inputs)
+    ObsidianMindmapCrew().crew().kickoff(inputs=inputs)
 
 
 def train():
@@ -27,7 +27,7 @@ def train():
         "topic": "AI LLMs"
     }
     try:
-        BackendCrew().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
+        ObsidianMindmapCrew().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
@@ -37,7 +37,7 @@ def replay():
     Replay the crew execution from a specific task.
     """
     try:
-        BackendCrew().crew().replay(task_id=sys.argv[1])
+        ObsidianMindmapCrew().crew().replay(task_id=sys.argv[1])
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
@@ -50,31 +50,28 @@ def test():
         "topic": "AI LLMs"
     }
     try:
-        BackendCrew().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)
+        ObsidianMindmapCrew().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
 
-
-
 # Title
-st.title("Consultas cnpjs da receita por filtros")
+st.title("Gerar mindmap")
 
 
 # Text Inputs
 
 # st.write('Vamos montar uma apresentação? descreva o tema e pontos importantes para que eu consiga te ajudar')
-st.chat_message('assistant').write("""Olá, vamos gerar seu código de backend?""")
+st.chat_message('assistant').write('vamos montar um mapa mental? descreva o tema e pontos importantes para que eu consiga te ajudar')
 
 st.session_state.messages = []
 
-st.session_state.status_text = 'erando códigos...'
-
-if inp := st.chat_input('Filtros desejados', key="principal_input"):
-    st.session_state.status_text = 'erando códigos...'
+if inp := st.chat_input('Tema e informação importante', key="principal_input"):
     st.session_state.messages.append({"role": "user", "content": inp})
     st.chat_message("user").markdown(inp)
-    with st.spinner("Gerando códigos..."):
-        result = BackendCrew().crew().kickoff(inputs={"topic": inp})
+    with st.spinner("Gerando apresentação..."):
+        result = ObsidianMindmapCrew().crew().kickoff(inputs={"topic": inp})
         st.session_state.messages.append({"role": "user", "content":result })
         st.chat_message("assistant").markdown(result)
+
+    

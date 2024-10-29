@@ -1,0 +1,21 @@
+interpretar_task:
+  description: >
+    Interprete o texto fornecido e crie um resumo focado em mindmap
+  expected_output: >
+    Resumo do texto fornecido focado em mindmap, contendo o máximo de dados possível da forma mais resumida possível
+  agent: interpretador
+
+criar_task:
+  description: >
+    Crie um JSON com a estrutura de um mindmap para ser importado no obsidian
+  expected_output: >
+    JSON com a estrutura de um mindmap para ser importado no obsidian sem duplicações de nodes e com os edges corretos
+  agent: criador
+
+validar_task:
+  description: >
+    Valide o JSON criado e garanta que não existem informações iguais duplicadas (nomes de nodes)
+  expected_output: >
+    JSON com a estrutura de um mindmap para ser importado no obsidian
+  agent: validador
+

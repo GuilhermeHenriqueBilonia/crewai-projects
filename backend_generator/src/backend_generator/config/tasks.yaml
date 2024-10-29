@@ -1,34 +1,48 @@
+requisitos_task:
+  description: >
+    Gere um requisito
+  expected_output: >
+    Requisito gerado com as informações definidas pelo usuário
+  agent: requisitos
+
 domain_task:
   description: >
-    Gere um domain baseado em {topic}
+    Gere um domain
   expected_output: >
     Domain gerado com as informações definidas pelo usuário
   agent: domain
 
+sql_task:
+  description: >
+    Gere um sql
+  expected_output: >
+    SQL gerado com as informações definidas pelo usuário
+  agent: dba
+
 configure_task:
   description: >
-    Configura o configuration baseado em {topic}
+    Configura o configuration
   expected_output: >
     configuration configurado com as informações definidas pelo usuário
   agent: configuration
 
 dto_task:
   description: >
-    Gera um dto baseado em {topic}
+    Gera um dto
   expected_output: >
     DTO gerado com as informações definidas pelo usuário
   agent: dto
 
 service_task:
   description: >
-    Gera um service baseado em {topic}
+    Gera um service
   expected_output: >
     Service gerado com as informações definidas pelo usuário
   agent: service
 
 command_task:
   description: >
-    Gera um command de Alter, um de Insert, um de Delete e um de Import baseado em {topic}
+    Gera um command de Alter, um de Insert, um de Delete e um de Import
   expected_output: >
     Commands de Alter, um de Insert, um de Delete e um de Import gerados com as informações definidas pelo usuário
   agent: commands

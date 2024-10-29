@@ -17,19 +17,6 @@ class TaianeViagensCrew():
 	"""TaianeViagens crew"""
 
 	@agent
-	def atendente(self) -> Agent:
-		return Agent(
-			config=self.agents_config['atendente'],
-			backstory=dedent(
-       			f"{self.agents_config['atendente']['backstory']}"
-          		f"TODO ANO DA DATA DE IDA E VOLTA DEVE SER APÓS A Data atual: {date.today()}"
-            ),
-			tools=[HumanTool()],
-			verbose=True,
-   			step_callback=callback_response
-		)
-
-	@agent
 	def analista_aeroportos(self) -> Agent:
 		return Agent(
 			config=self.agents_config['analista_aeroportos'],

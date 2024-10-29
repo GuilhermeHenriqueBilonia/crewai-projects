@@ -16,16 +16,14 @@ class HumanTool(BaseTool):
     description: str = (
         "Fazer perguntas ao usuário para coletar informações"
     )
-    prompt_func: Callable[[str], None] = Field(default_factory=lambda: _print_func)
-    input_func: Callable = Field(default_factory=lambda: st.text_input)
 
     def _run(
         self,
         query: str
     ) -> str:
         """Use the Human input tool."""
-        self.prompt_func(query)
-        return self.input_func("Your input:")
+        res = input(query)
+        return res
     
    
 

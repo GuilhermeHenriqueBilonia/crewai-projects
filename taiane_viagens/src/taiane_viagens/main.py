@@ -3,6 +3,13 @@ from datetime import time
 import sys
 from taiane_viagens.crew import TaianeViagensCrew
 import streamlit as st
+from pydantic import BaseModel
+
+from fastapi import FastAPI, Request
+import uvicorn
+
+app = FastAPI()
+print('--------------------------------- APP INICIADO ----------------------------------')
 
 # This main file is intended to be a way for your to run your
 # crew locally, so refrain from adding necessary logic into this file.
@@ -76,5 +83,17 @@ run()
 #     st.write(result)
 
 #     st.markdown(result, unsafe_allow_html=True)
-        
+class request_body(BaseModel):
+    resumo: str
+       
+@app.get('/')
+def read_root():
+    return {'message': 'Publicado na vercel e funcional!'}
 
+@app.post('/taiane/buscar-viagens')
+def predict(req : request_body): 
+    inputs = {
+            'topic': request_body.question
+        }
+    response = TaianeViagensCrew().crew().kickoff(inputs=inputs)
+    return response
