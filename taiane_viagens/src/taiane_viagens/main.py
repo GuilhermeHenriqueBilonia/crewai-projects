@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from datetime import time
 import sys
-from taiane_viagens.crew import TaianeViagensCrew
+from crew import TaianeViagensCrew
 import streamlit as st
 from pydantic import BaseModel
 
