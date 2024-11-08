@@ -1,9 +1,5 @@
 crewai
 crewai-tools
-swarm
 streamlit
 pandas
-pyodbc
 python-dotenv
-pysqlite3-binary
-chainlit
