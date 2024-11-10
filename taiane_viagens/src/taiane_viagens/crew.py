@@ -49,12 +49,6 @@ class TaianeViagensCrew():
 
 	# TASKS ------------------------------------------
 	@task
-	def atendente_task(self) -> Task:
-		return Task(
-			config=self.tasks_config['atendee_task'],
-		)
-
-	@task
 	def correcao_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['correction_task']
