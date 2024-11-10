@@ -2,7 +2,6 @@
 from datetime import time
 import sys
 from crew import TaianeViagensCrew
-import streamlit as st
 from pydantic import BaseModel
 
 from fastapi import FastAPI, Request

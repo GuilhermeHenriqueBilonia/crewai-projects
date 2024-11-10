@@ -3,7 +3,6 @@ from textwrap import dedent
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from tools.custom_tool import BuscarPassagemTool, HumanTool, search_tool
-import streamlit as st
 
 def callback_response(response):
 	print(response.result)
