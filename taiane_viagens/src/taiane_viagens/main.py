@@ -62,8 +62,6 @@ def test():
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
 
-
-run()
 # st.set_page_config(
 #     layout="wide"
 # )
