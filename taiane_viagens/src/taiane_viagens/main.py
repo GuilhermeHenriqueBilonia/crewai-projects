@@ -90,7 +90,7 @@ def read_root():
 @app.post('/taiane/buscar-viagens')
 def predict(req : request_body): 
     inputs = {
-            'topic': request_body.question
+            'topic': request_body.resumo
         }
     response = TaianeViagensCrew().crew().kickoff(inputs=inputs)
     return response
