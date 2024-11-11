@@ -3,7 +3,6 @@ import json
 from typing import Callable, Optional
 from crewai_tools import BaseTool, SerperDevTool, ScrapeWebsiteTool
 import requests
-import streamlit as st
 
 test = ScrapeWebsiteTool(website_url='https://google.com')
 search_tool = SerperDevTool()
