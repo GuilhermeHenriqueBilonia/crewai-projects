@@ -68,6 +68,6 @@
       "request": "launch",
       "program": "taiane_viagens/src/taiane_viagens/main.py",
       "console": "integratedTerminal"
-    }
+    },
   ]
 }
