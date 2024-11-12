@@ -2,6 +2,9 @@
 correction_task:
   description: >
     Corrija as informações de destino e origem com os códigos IATA dos aeroportos e devolva o mesmo resumo recebido, mas com a correção aplicada.
+    Se atenha somente a correção dos códigos IATA dos aeroportos.
+    Nunca mude o destino ou origem do usuário. Troque somente o nome do destino e origem para o IATA correto.
+    Dados do usuário: {topic}
   expected_output: >
     Um resumo das informações passadas pelo usuário, com as correções aplicadas.
   agent: analista_aeroportos
@@ -17,6 +20,11 @@ buscador_passagem_task:
 agente_viagem_task:
   description: >
     Filtra as opções de passagens aéreas e apresenta as melhores opções ao usuário com base nas informações fornecidas.
+    dados do usuário: {topic}
+    Utilize somente os períodos de ida e volta, opção de compra (milhar ou normal) e conexões para buscar os voos.
+    Utilize o JSON para fazer a chamada de API de integração.
   expected_output: >
     Quatro opções de passagens aéreas com base nas informações fornecidas.
   agent: agente_viagem
+  context: 
+    - buscador_passagem_task

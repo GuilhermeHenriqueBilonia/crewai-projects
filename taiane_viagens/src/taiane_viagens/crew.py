@@ -4,13 +4,6 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from tools.custom_tool import BuscarPassagemTool, HumanTool, search_tool
 
-def callback_response(response):
-	print(response.result)
-	st.write(response.result)
-	res = st.chat_input("")
-	return res
-	
-
 @CrewBase
 class TaianeViagensCrew():
 	"""TaianeViagens crew"""
@@ -76,8 +69,5 @@ class TaianeViagensCrew():
 			verbose=True,
 			language='pt-br',
 			memory=True,
-			
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)
-  
-TaianeViagensCrew()
